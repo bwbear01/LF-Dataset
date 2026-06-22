@@ -12,7 +12,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         body {
-            max-width: 1200px;
+            max-width: 1400px; /* 加宽适配6列布局 */
             margin: 60px auto;
             padding: 0 20px;
             text-align: center;
@@ -80,26 +80,42 @@
             margin-bottom: 30px;
             color: #1a2436;
         }
-        /* 图片/动图行容器（保证3张对齐） */
+        /* 6列媒体容器（图片+注释） */
         .media-row {
             display: flex;
-            gap: 16px;
+            gap: 12px; /* 缩小间距适配6列 */
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
-        .media-row img {
-            width: 30%; /* 3张均分宽度，保证对齐 */
-            min-width: 280px; /* 手机端最小宽度，避免太窄 */
+        /* 单个媒体项（图片+注释） */
+        .media-item {
+            width: 15%; /* 6列均分宽度 */
+            min-width: 120px; /* 手机端最小宽度 */
+        }
+        /* 图片样式（缩小尺寸避免过大） */
+        .media-item img {
+            width: 100%;
             height: auto;
             border-radius: 4px;
+            border: 1px solid #eee; /* 加边框更清晰 */
+        }
+        /* 图片下方注释 */
+        .media-caption {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.4;
         }
         /* 适配手机 */
         @media (max-width:768px) {
             h1 {font-size: 28px;}
             .dataset-section h2 {font-size: 24px;}
-            .media-row img {width: 100%;} /* 手机端每张占满一行 */
+            .media-item {width: 45%;} /* 手机端2列布局 */
             .btn-group a {margin:6px 4px; padding:9px 16px; font-size:14px;}
+        }
+        @media (max-width:480px) {
+            .media-item {width: 100%;} /* 超小屏1列布局 */
         }
     </style>
 </head>
@@ -107,8 +123,8 @@
     <!-- 页面大标题 -->
     <h1>LF-Raindrop & LF-Dirty: Light Field Dirt Removal Dataset</h1>
 
-    <!-- 作者 -->
-    <div class="authors">Shuo Zhang, XXX Guo, XXX Lin, XXX Tian</div>
+    <!-- 作者（更新为指定内容，Qihua的H大写） -->
+    <div class="authors">Qihua Chen, Shuo Zhang, Chen Gao, Youfang Lin</div>
 
     <!-- 院校单位 -->
     <div class="affiliation">
@@ -117,7 +133,7 @@
     </div>
     <div class="corr">* Corresponding author</div>
 
-    <!-- 功能按钮 -->
+    <!-- 功能按钮（更新为你提供的链接，移除Code按钮） -->
     <div class="btn-group">
         <a href="#raindrop">LF-Raindrop</a>
         <a href="#dirty">LF-Dirty</a>
@@ -128,38 +144,98 @@
     <!-- 第一栏：LF-Raindrop数据集展示 -->
     <div class="dataset-section" id="raindrop">
         <h2>LF-Raindrop Dataset</h2>
-        <!-- 第一行：3张PNG图片（img文件夹下） -->
+        <!-- 第一行：6列（雨滴图+GT图交叉） -->
         <div class="media-row">
-            <img src="img/raindrop1.png" alt="Raindrop dataset sample 1">
-            <img src="img/raindrop2.png" alt="Raindrop dataset sample 2">
-            <img src="img/raindrop3.png" alt="Raindrop dataset sample 3">
+            <div class="media-item">
+                <img src="img/raindrop.png" alt="Raindrop dataset sample">
+                <div class="media-caption">Raindrop Sample</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop_gt.png" alt="Raindrop GT sample">
+                <div class="media-caption">Raindrop GT</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop1.png" alt="Raindrop dataset sample 1">
+                <div class="media-caption">Raindrop Sample 1</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop_gt1.png" alt="Raindrop GT sample 1">
+                <div class="media-caption">Raindrop GT 1</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop2.png" alt="Raindrop dataset sample 2">
+                <div class="media-caption">Raindrop Sample 2</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop_gt2.png" alt="Raindrop GT sample 2">
+                <div class="media-caption">Raindrop GT 2</div>
+            </div>
         </div>
-        <!-- 第二行：3个GIF动图（img文件夹下，和PNG对齐） -->
+        <!-- 第二行：3个GIF（保持3列，每列带注释） -->
         <div class="media-row">
-            <img src="img/raindrop_gt.gif" alt="Raindrop ground truth">
-            <img src="img/raindrop_ori.gif" alt="Raindrop original image">
-            <img src="img/raindrop_result.gif" alt="Raindrop removal result">
+            <div class="media-item" style="width: 30%; min-width: 200px;">
+                <img src="img/raindrop_gt.gif" alt="Raindrop ground truth">
+                <div class="media-caption">Raindrop GT (GIF)</div>
+            </div>
+            <div class="media-item" style="width: 30%; min-width: 200px;">
+                <img src="img/raindrop_ori.gif" alt="Raindrop original image">
+                <div class="media-caption">Raindrop Original (GIF)</div>
+            </div>
+            <div class="media-item" style="width: 30%; min-width: 200px;">
+                <img src="img/raindrop_result.gif" alt="Raindrop removal result">
+                <div class="media-caption">Raindrop Result (GIF)</div>
+            </div>
         </div>
     </div>
 
     <!-- 第二栏：LF-Dirty数据集展示 -->
     <div class="dataset-section" id="dirty">
         <h2>LF-Dirty Dataset</h2>
-        <!-- 第一行：3张PNG图片（img文件夹下） -->
+        <!-- 第一行：6列（脏污图+GT图交叉） -->
         <div class="media-row">
-            <img src="img/dirty1.png" alt="Dirty dataset sample 1">
-            <img src="img/dirty2.png" alt="Dirty dataset sample 2">
-            <img src="img/dirty3.png" alt="Dirty dataset sample 3">
+            <div class="media-item">
+                <img src="img/dirty.png" alt="Dirty dataset sample">
+                <div class="media-caption">Dirty Sample</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty_gt.png" alt="Dirty GT sample">
+                <div class="media-caption">Dirty GT</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty1.png" alt="Dirty dataset sample 1">
+                <div class="media-caption">Dirty Sample 1</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty_gt1.png" alt="Dirty GT sample 1">
+                <div class="media-caption">Dirty GT 1</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty2.png" alt="Dirty dataset sample 2">
+                <div class="media-caption">Dirty Sample 2</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty_gt2.png" alt="Dirty GT sample 2">
+                <div class="media-caption">Dirty GT 2</div>
+            </div>
         </div>
-        <!-- 第二行：3个GIF动图（img文件夹下，和PNG对齐） -->
+        <!-- 第二行：3个GIF（保持3列，每列带注释） -->
         <div class="media-row">
-            <img src="img/dirty_gt.gif" alt="Dirty ground truth">
-            <img src="img/dirty_ori.gif" alt="Dirty original image">
-            <img src="img/dirty_result.gif" alt="Dirty removal result">
+            <div class="media-item" style="width: 30%; min-width: 200px;">
+                <img src="img/dirty_gt.gif" alt="Dirty ground truth">
+                <div class="media-caption">Dirty GT (GIF)</div>
+            </div>
+            <div class="media-item" style="width: 30%; min-width: 200px;">
+                <img src="img/dirty_ori.gif" alt="Dirty original image">
+                <div class="media-caption">Dirty Original (GIF)</div>
+            </div>
+            <div class="media-item" style="width: 30%; min-width: 200px;">
+                <img src="img/dirty_result.gif" alt="Dirty removal result">
+                <div class="media-caption">Dirty Result (GIF)</div>
+            </div>
         </div>
     </div>
 
-    <!-- 数据集文字介绍（保留核心信息） -->
+    <!-- 数据集文字介绍 -->
     <div class="intro-text">
         <h2>Dataset Introduction</h2>
         <p>
