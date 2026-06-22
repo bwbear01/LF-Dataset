@@ -71,22 +71,34 @@
             margin: 28px 0 12px;
             font-size: 24px;
         }
-        /* 图片并排容器 */
-        .img-row {
+        /* 数据集分栏样式 */
+        .dataset-section {
+            margin: 80px 0;
+        }
+        .dataset-section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #1a2436;
+        }
+        /* 图片/动图行容器（保证3张对齐） */
+        .media-row {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 20px;
         }
-        .img-row img {
-            max-width: 48%;
+        .media-row img {
+            width: 30%; /* 3张均分宽度，保证对齐 */
+            min-width: 280px; /* 手机端最小宽度，避免太窄 */
             height: auto;
             border-radius: 4px;
         }
         /* 适配手机 */
         @media (max-width:768px) {
             h1 {font-size: 28px;}
-            .img-row img {max-width: 100%;}
+            .dataset-section h2 {font-size: 24px;}
+            .media-row img {width: 100%;} /* 手机端每张占满一行 */
             .btn-group a {margin:6px 4px; padding:9px 16px; font-size:14px;}
         }
     </style>
@@ -105,16 +117,50 @@
     </div>
     <div class="corr">* Corresponding author</div>
 
-    <!-- 功能按钮（可替换链接） -->
+    <!-- 功能按钮（已移除Code按钮） -->
     <div class="btn-group">
-        <a href="#dataset">Dataset Intro</a>
+        <a href="#raindrop">LF-Raindrop</a>
+        <a href="#dirty">LF-Dirty</a>
         <a href="你的网盘/下载链接">Download</a>
-        <a href="你的github代码地址">Code</a>
         <a href="论文pdf链接">Paper</a>
     </div>
 
-    <!-- 数据集文字介绍区域 -->
-    <div class="intro-text" id="dataset">
+    <!-- 第一栏：LF-Raindrop数据集展示 -->
+    <div class="dataset-section" id="raindrop">
+        <h2>LF-Raindrop Dataset</h2>
+        <!-- 第一行：3张PNG图片（img文件夹下） -->
+        <div class="media-row">
+            <img src="img/raindrop1.png" alt="Raindrop dataset sample 1">
+            <img src="img/raindrop2.png" alt="Raindrop dataset sample 2">
+            <img src="img/raindrop3.png" alt="Raindrop dataset sample 3">
+        </div>
+        <!-- 第二行：3个GIF动图（img文件夹下，和PNG对齐） -->
+        <div class="media-row">
+            <img src="img/raindrop_gt.gif" alt="Raindrop ground truth">
+            <img src="img/raindrop_ori.gif" alt="Raindrop original image">
+            <img src="img/raindrop_result.gif" alt="Raindrop removal result">
+        </div>
+    </div>
+
+    <!-- 第二栏：LF-Dirty数据集展示 -->
+    <div class="dataset-section" id="dirty">
+        <h2>LF-Dirty Dataset</h2>
+        <!-- 第一行：3张PNG图片（img文件夹下） -->
+        <div class="media-row">
+            <img src="img/dirty1.png" alt="Dirty dataset sample 1">
+            <img src="img/dirty2.png" alt="Dirty dataset sample 2">
+            <img src="img/dirty3.png" alt="Dirty dataset sample 3">
+        </div>
+        <!-- 第二行：3个GIF动图（img文件夹下，和PNG对齐） -->
+        <div class="media-row">
+            <img src="img/dirty_gt.gif" alt="Dirty ground truth">
+            <img src="img/dirty_ori.gif" alt="Dirty original image">
+            <img src="img/dirty_result.gif" alt="Dirty removal result">
+        </div>
+    </div>
+
+    <!-- 数据集文字介绍（保留核心信息） -->
+    <div class="intro-text">
         <h2>Dataset Introduction</h2>
         <p>
             We build two real-world paired light field datasets, LF-Raindrop and LF-Dirty, for transparent plane dirt removal tasks.
@@ -126,14 +172,6 @@
             All data is captured by Lytro Illum light field camera with 7×7 sub-aperture views.
             Each group includes degraded dirty light field, clean ground-truth light field and pixel-level annotation mask.
         </p>
-    </div>
-
-    <!-- 并排样图/GIF区域（替换成你的图片路径即可） -->
-    <div class="img-row">
-        <!-- 左图：脏污原图 -->
-        <img src="sample_dirty.gif" alt="Raindrop light field input">
-        <!-- 右图：修复后清晰图 / GIF动图 -->
-        <img src="sample_clean.gif" alt="Restored light field result">
     </div>
 
 </body>
