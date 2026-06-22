@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LF-Raindrop & LF-Dirty Dataset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #1a2436;
+        }
+        /* 标题样式 */
+        h1 {
+            font-size: 42px;
+            line-height: 1.25;
+            margin-bottom: 24px;
+        }
+        /* 作者行 */
+        .authors {
+            font-size: 19px;
+            color: #255ed9;
+            margin-bottom: 16px;
+        }
+        /* 单位 */
+        .affiliation {
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        .corr {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 45px;
+        }
+        /* 导航按钮组 */
+        .btn-group {
+            margin-bottom: 60px;
+        }
+        .btn-group a {
+            display: inline-block;
+            background-color: #222836;
+            color: white;
+            text-decoration: none;
+            padding: 11px 24px;
+            border-radius: 999px;
+            margin: 0 7px;
+            font-size: 16px;
+        }
+        .btn-group a:hover {
+            background-color: #40485c;
+        }
+        /* 数据集文字介绍 */
+        .intro-text {
+            max-width: 950px;
+            margin: 0 auto 50px;
+            font-size: 18px;
+            line-height: 1.7;
+            text-align: left;
+        }
+        .intro-text h2 {
+            margin: 28px 0 12px;
+            font-size: 24px;
+        }
+        /* 图片并排容器 */
+        .img-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .img-row img {
+            max-width: 48%;
+            height: auto;
+            border-radius: 4px;
+        }
+        /* 适配手机 */
+        @media (max-width:768px) {
+            h1 {font-size: 28px;}
+            .img-row img {max-width: 100%;}
+            .btn-group a {margin:6px 4px; padding:9px 16px; font-size:14px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面大标题 -->
+    <h1>LF-Raindrop & LF-Dirty: Light Field Dirt Removal Dataset</h1>
+
+    <!-- 作者 -->
+    <div class="authors">Shuo Zhang, XXX Guo, XXX Lin, XXX Tian</div>
+
+    <!-- 院校单位 -->
+    <div class="affiliation">
+        Beijing Key Laboratory of Traffic Data Mining and Embodied Intelligence<br>
+        School of Computer Science & Technology, Beijing Jiaotong University, China
+    </div>
+    <div class="corr">* Corresponding author</div>
+
+    <!-- 功能按钮（可替换链接） -->
+    <div class="btn-group">
+        <a href="#dataset">Dataset Intro</a>
+        <a href="你的网盘/下载链接">Download</a>
+        <a href="你的github代码地址">Code</a>
+        <a href="论文pdf链接">Paper</a>
+    </div>
+
+    <!-- 数据集文字介绍区域 -->
+    <div class="intro-text" id="dataset">
+        <h2>Dataset Introduction</h2>
+        <p>
+            We build two real-world paired light field datasets, LF-Raindrop and LF-Dirty, for transparent plane dirt removal tasks.
+            LF-Raindrop contains 88 groups of rainy light field images with manual raindrop occlusion masks.
+            LF-Dirty covers four typical contaminants: raindrops, dust, milk stains and ink marks, with 192 paired light field scenes.
+        </p>
+        <h2>Data Details</h2>
+        <p>
+            All data is captured by Lytro Illum light field camera with 7×7 sub-aperture views.
+            Each group includes degraded dirty light field, clean ground-truth light field and pixel-level annotation mask.
+        </p>
+    </div>
+
+    <!-- 并排样图/GIF区域（替换成你的图片路径即可） -->
+    <div class="img-row">
+        <!-- 左图：脏污原图 -->
+        <img src="sample_dirty.gif" alt="Raindrop light field input">
+        <!-- 右图：修复后清晰图 / GIF动图 -->
+        <img src="sample_clean.gif" alt="Restored light field result">
+    </div>
+
+</body>
+</html>
