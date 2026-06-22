@@ -18,19 +18,16 @@
             text-align: center;
             color: #1a2436;
         }
-        /* 标题样式 */
         h1 {
             font-size: 42px;
             line-height: 1.25;
             margin-bottom: 24px;
         }
-        /* 作者行 */
         .authors {
             font-size: 19px;
             color: #255ed9;
             margin-bottom: 16px;
         }
-        /* 通讯作者星号 */
         .corr-author {
             position: relative;
         }
@@ -41,7 +38,6 @@
             right: -8px;
             font-size: 16px;
         }
-        /* 单位 */
         .affiliation {
             font-size: 17px;
             line-height: 1.6;
@@ -53,7 +49,6 @@
             color: #666;
             margin-bottom: 45px;
         }
-        /* 导航按钮组 */
         .btn-group {
             margin-bottom: 60px;
         }
@@ -70,10 +65,9 @@
         .btn-group a:hover {
             background-color: #40485c;
         }
-        /* 数据集文字介绍 */
         .intro-text {
             max-width: 950px;
-            margin: 80px auto 50px; /* 移到图片后，增加顶部间距 */
+            margin: 80px auto 50px;
             font-size: 18px;
             line-height: 1.7;
             text-align: left;
@@ -82,16 +76,15 @@
             margin: 28px 0 12px;
             font-size: 24px;
         }
-        /* 精简表格样式 */
         .simple-table {
-            width: 80%; /* 缩小表格宽度 */
-            margin: 20px auto; /* 居中 */
+            width: 80%;
+            margin: 20px auto;
             border-collapse: collapse;
-            font-size: 15px; /* 缩小字体 */
+            font-size: 15px;
         }
         .simple-table th, .simple-table td {
             border: 1px solid #eee;
-            padding: 8px 6px; /* 缩小内边距 */
+            padding: 8px 6px;
             text-align: center;
         }
         .simple-table th {
@@ -104,7 +97,6 @@
             margin-bottom: 8px;
             color: #222;
         }
-        /* 数据集分栏样式 */
         .dataset-section {
             margin: 80px 0;
         }
@@ -113,7 +105,6 @@
             margin-bottom: 30px;
             color: #1a2436;
         }
-        /* 6列媒体容器（图片+注释） */
         .media-row {
             display: flex;
             gap: 12px;
@@ -121,26 +112,22 @@
             flex-wrap: wrap;
             margin-bottom: 30px;
         }
-        /* 单个媒体项（图片+注释） */
         .media-item {
             width: 15%;
             min-width: 120px;
         }
-        /* 图片样式 */
         .media-item img {
             width: 100%;
             height: auto;
             border-radius: 4px;
             border: 1px solid #eee;
         }
-        /* 图片下方注释 */
         .media-caption {
             margin-top: 8px;
             font-size: 14px;
             color: #555;
             line-height: 1.4;
         }
-        /* BibTex容器样式 */
         .bibtex-container {
             max-width: 950px;
             margin: 100px auto 60px;
@@ -186,9 +173,8 @@
             border-radius: 4px;
             white-space: pre-wrap;
             word-break: break-all;
-            display: none; /* 默认隐藏bibtex文本，仅用于复制 */
+            display: none;
         }
-        /* 适配手机 */
         @media (max-width:768px) {
             h1 {font-size: 28px;}
             .dataset-section h2 {font-size: 24px;}
@@ -206,26 +192,22 @@
     </style>
 </head>
 <body>
-    <!-- 页面大标题 -->
     <h1>LF-Raindrop & LF-Dirty: Light Field Dirt Removal Dataset</h1>
 
-    <!-- 作者 -->
     <div class="authors">Qihua Chen, <span class="corr-author">Shuo Zhang</span>, Chen Gao, Youfang Lin</div>
 
-    <!-- 院校单位 -->
     <div class="affiliation">
         Beijing Key Laboratory of Traffic Data Mining and Embodied Intelligence<br>
         School of Computer Science & Technology, Beijing Jiaotong University, China
     </div>
     <div class="corr">* Corresponding author</div>
 
-    <!-- 功能按钮 -->
     <div class="btn-group">
         <a href="#raindrop">LF-Raindrop</a>
         <a href="#dirty">LF-Dirty</a>
         <a href="https://pan.baidu.com/s/161HnA9afHtTC75of9cpsyQ?pwd=rqv6">Download</a>
         <a href="https://www.sciencedirect.com/science/article/abs/pii/S0925231225030176">Paper</a>
-        <a href="#data-analysis">Data Analysis</a> 
+        <a href="#data-analysis">Data Analysis</a>
     </div>
 
     <div class="dataset-section" id="raindrop">
@@ -293,66 +275,68 @@
             </div>
             <div class="media-item" style="width: 30%; min-width: 200px;">
                 <img src="img/raindrop_result.gif" alt="Raindrop removal result">
-                <div class="media-caption">Raindrop Result (GIF)</div>
+                <div class="media-caption">Raindrop Removal Result (GIF)</div>
             </div>
         </div>
     </div>
 
     <div class="dataset-section" id="dirty">
         <h2>LF-Dirty Dataset</h2>
+        <!-- 第一行：6列（脏污图+GT图，命名改为dust/stain/ink） -->
         <div class="media-row">
             <div class="media-item">
-                <img src="img/dirty.png" alt="Dirty dataset sample 1">
-                <div class="media-caption">Dirty Sample 1</div>
+                <img src="img/dust.png" alt="Dirty dataset sample (Dust)">
+                <div class="media-caption">Dirty Sample (Dust)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_gt.png" alt="Dirty GT sample 1">
-                <div class="media-caption">Dirty GT 1</div>
+                <img src="img/dust_gt.png" alt="Dirty GT (Dust)">
+                <div class="media-caption">Dirty GT (Dust)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty1.png" alt="Dirty dataset sample 2">
-                <div class="media-caption">Dirty Sample 2</div>
+                <img src="img/stain.png" alt="Dirty dataset sample (Stain)">
+                <div class="media-caption">Dirty Sample (Stain)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_gt1.png" alt="Dirty GT sample 2">
-                <div class="media-caption">Dirty GT 2</div>
+                <img src="img/stain_gt.png" alt="Dirty GT (Stain)">
+                <div class="media-caption">Dirty GT (Stain)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty2.png" alt="Dirty dataset sample 3">
-                <div class="media-caption">Dirty Sample 3</div>
+                <img src="img/ink.png" alt="Dirty dataset sample (Ink)">
+                <div class="media-caption">Dirty Sample (Ink)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_gt2.png" alt="Dirty GT sample 3">
-                <div class="media-caption">Dirty GT 3</div>
+                <img src="img/ink_gt.png" alt="Dirty GT (Ink)">
+                <div class="media-caption">Dirty GT (Ink)</div>
             </div>
         </div>
+        <!-- 第二行：6列（mask/refocus，命名改为dust/stain/ink） -->
         <div class="media-row">
             <div class="media-item">
-                <img src="img/dirty_mask.png" alt="Dirty mask 1">
-                <div class="media-caption">Dirty Mask 1</div>
+                <img src="img/dust_mask.png" alt="Dirty mask (Dust)">
+                <div class="media-caption">Dirty Mask (Dust)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_refocus.png" alt="Dirty refocus 1">
-                <div class="media-caption">Dirty Refocus 1 (PNG)</div>
+                <img src="img/dust_refocus.png" alt="Dirty refocus (Dust)">
+                <div class="media-caption">Dirty Refocus (Dust) (PNG)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_mask1.png" alt="Dirty mask 2">
-                <div class="media-caption">Dirty Mask 2</div>
+                <img src="img/stain_mask.png" alt="Dirty mask (Stain)">
+                <div class="media-caption">Dirty Mask (Stain)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_refocus1.png" alt="Dirty refocus 2">
-                <div class="media-caption">Dirty Refocus 2 (PNG)</div>
+                <img src="img/stain_refocus.png" alt="Dirty refocus (Stain)">
+                <div class="media-caption">Dirty Refocus (Stain) (PNG)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_mask2.png" alt="Dirty mask 3">
-                <div class="media-caption">Dirty Mask 3</div>
+                <img src="img/ink_mask.png" alt="Dirty mask (Ink)">
+                <div class="media-caption">Dirty Mask (Ink)</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_refocus2.png" alt="Dirty refocus 3">
-                <div class="media-caption">Dirty Refocus 3 (PNG)</div>
+                <img src="img/ink_refocus.png" alt="Dirty refocus (Ink)">
+                <div class="media-caption">Dirty Refocus (Ink) (PNG)</div>
             </div>
         </div>
-        <!-- 第三行：3个GIF（原有） -->
+        <!-- 第三行：3个GIF（保留原有命名，注释明确类型） -->
         <div class="media-row">
             <div class="media-item" style="width: 30%; min-width: 200px;">
                 <img src="img/dirty_gt.gif" alt="Dirty ground truth">
@@ -364,7 +348,7 @@
             </div>
             <div class="media-item" style="width: 30%; min-width: 200px;">
                 <img src="img/dirty_result.gif" alt="Dirty removal result">
-                <div class="media-caption">Dirty Result (GIF)</div>
+                <div class="media-caption">Dirty Removal Result (GIF)</div>
             </div>
         </div>
     </div>
@@ -434,7 +418,6 @@
         </p>
     </div>
 
-    <!-- BibTex复制区域（页面最下方） -->
     <div class="bibtex-container">
         <div class="bibtex-header">
             <div class="bibtex-title">BibTex</div>
@@ -455,21 +438,15 @@ author = {Qihua Chen and Shuo Zhang and Chen Gao and Youfang Lin}
         </div>
     </div>
 
-    <!-- 复制功能JS -->
     <script>
-        // 获取按钮和BibTex内容元素
         const copyBtn = document.getElementById('copyBibtexBtn');
         const bibtexContent = document.getElementById('bibtexContent');
 
-        // 复制功能
         copyBtn.addEventListener('click', async () => {
             try {
-                // 复制文本到剪贴板
                 await navigator.clipboard.writeText(bibtexContent.textContent);
-                // 按钮状态反馈
                 copyBtn.textContent = 'Copied!';
                 copyBtn.classList.add('copied');
-                // 2秒后恢复按钮状态
                 setTimeout(() => {
                     copyBtn.textContent = 'Copy';
                     copyBtn.classList.remove('copied');
