@@ -12,7 +12,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         body {
-            max-width: 1400px; /* 加宽适配6列布局 */
+            max-width: 1400px;
             margin: 60px auto;
             padding: 0 20px;
             text-align: center;
@@ -71,6 +71,28 @@
             margin: 28px 0 12px;
             font-size: 24px;
         }
+        /* 论文表格样式（统一适配） */
+        .paper-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        .paper-table th, .paper-table td {
+            border: 1px solid #eee;
+            padding: 12px 8px;
+            text-align: center;
+        }
+        .paper-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        .table-caption {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #222;
+        }
         /* 数据集分栏样式 */
         .dataset-section {
             margin: 80px 0;
@@ -83,22 +105,22 @@
         /* 6列媒体容器（图片+注释） */
         .media-row {
             display: flex;
-            gap: 12px; /* 缩小间距适配6列 */
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 30px;
         }
         /* 单个媒体项（图片+注释） */
         .media-item {
-            width: 15%; /* 6列均分宽度 */
-            min-width: 120px; /* 手机端最小宽度 */
+            width: 15%;
+            min-width: 120px;
         }
-        /* 图片样式（缩小尺寸避免过大） */
+        /* 图片样式 */
         .media-item img {
             width: 100%;
             height: auto;
             border-radius: 4px;
-            border: 1px solid #eee; /* 加边框更清晰 */
+            border: 1px solid #eee;
         }
         /* 图片下方注释 */
         .media-caption {
@@ -111,11 +133,12 @@
         @media (max-width:768px) {
             h1 {font-size: 28px;}
             .dataset-section h2 {font-size: 24px;}
-            .media-item {width: 45%;} /* 手机端2列布局 */
+            .media-item {width: 45%;}
             .btn-group a {margin:6px 4px; padding:9px 16px; font-size:14px;}
+            .paper-table th, .paper-table td {padding: 8px 4px; font-size: 14px;}
         }
         @media (max-width:480px) {
-            .media-item {width: 100%;} /* 超小屏1列布局 */
+            .media-item {width: 100%;}
         }
     </style>
 </head>
@@ -123,7 +146,7 @@
     <!-- 页面大标题 -->
     <h1>LF-Raindrop & LF-Dirty: Light Field Dirt Removal Dataset</h1>
 
-    <!-- 作者（更新为指定内容，Qihua的H大写） -->
+    <!-- 作者 -->
     <div class="authors">Qihua Chen, Shuo Zhang, Chen Gao, Youfang Lin</div>
 
     <!-- 院校单位 -->
@@ -133,59 +156,231 @@
     </div>
     <div class="corr">* Corresponding author</div>
 
-    <!-- 功能按钮（仅保留Dataset Intro+Download+Paper，移除LF-xxx按钮） -->
+    <!-- 功能按钮 -->
     <div class="btn-group">
         <a href="#dataset">Dataset Intro</a>
+        <a href="#raindrop">LF-Raindrop</a>
+        <a href="#dirty">LF-Dirty</a>
         <a href="https://pan.baidu.com/s/161HnA9afHtTC75of9cpsyQ?pwd=rqv6">Download</a>
         <a href="https://www.sciencedirect.com/science/article/abs/pii/S0925231225030176">Paper</a>
     </div>
 
-    <!-- 数据集文字介绍（锚点对应Dataset Intro按钮） -->
+    <!-- 数据集文字介绍（按论文表格更新+补充包含关系） -->
     <div class="intro-text" id="dataset">
         <h2>Dataset Introduction</h2>
         <p>
-            We build two real-world paired light field datasets, LF-Raindrop and LF-Dirty, for transparent plane dirt removal tasks.
-            LF-Raindrop contains 88 groups of rainy light field images with manual raindrop occlusion masks.
-            LF-Dirty covers four typical contaminants: raindrops, dust, milk stains and ink marks, with 192 paired light field scenes.
+            The LF-Raindrop dataset is derived from the paper "Depth-aware intra & inter aggregation for light field raindrop removal" and is publicly available for download. The LF-Dirty dataset integrates the LF-Raindrop dataset and will be open to the public in the future. 
+            All lfr files in the datasets are accompanied by corresponding white files for decoding.
         </p>
-        <h2>Data Details</h2>
+
+        <h2>LF-Raindrop Dataset Statistical Analysis</h2>
+        <!-- 场景主题分布 -->
+        <div class="table-caption">Scene Themes Distribution (LF-Raindrop)</div>
+        <table class="paper-table">
+            <thead>
+                <tr>
+                    <th>Theme</th>
+                    <th>Plants</th>
+                    <th>Transportation</th>
+                    <th>Infrastructure</th>
+                    <th>Architecture</th>
+                    <th>Others</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Quantity</td>
+                    <td>10</td>
+                    <td>15</td>
+                    <td>17</td>
+                    <td>26</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 景深与聚焦类型 -->
+        <div class="table-caption">Depth of Field & Focus Type (LF-Raindrop)</div>
+        <table class="paper-table">
+            <thead>
+                <tr>
+                    <th>Depth of Field</th>
+                    <th>Close View</th>
+                    <th>Medium View</th>
+                    <th>Long View</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Quantity</td>
+                    <td>23</td>
+                    <td>35</td>
+                    <td>30</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="paper-table" style="margin-top: 8px;">
+            <thead>
+                <tr>
+                    <th>Focus on Foreground</th>
+                    <th>Focus on Background</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>48</td>
+                    <td>40</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 视差范围 -->
+        <div class="table-caption">Disparity Range (LF-Raindrop)</div>
+        <table class="paper-table">
+            <thead>
+                <tr>
+                    <th>Disparity</th>
+                    <th>4$\sim$5</th>
+                    <th>5$\sim$6</th>
+                    <th>6$\sim$7</th>
+                    <th>7$\sim$8</th>
+                    <th>8$\sim$9</th>
+                    <th>9$\sim$10</th>
+                    <th>10$\sim$11</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Quantity</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>14</td>
+                    <td>34</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>LF-Dirty Dataset Statistical Analysis</h2>
+        <p>
+            The LF-Dirty dataset covers a wider range of dirty types on transparent planes compared with LF-Raindrop, and it has integrated all data of LF-Raindrop. The detailed distribution is shown in the table below (unit: groups):
+        </p>
+        <!-- LF-Dirty类别分布 -->
+        <div class="table-caption">Dataset Split & Task Distribution (LF-Dirty)</div>
+        <table class="paper-table">
+            <thead>
+                <tr>
+                    <th>Split</th>
+                    <th>Total</th>
+                    <th>Dust</th>
+                    <th>Ink Removal</th>
+                    <th>Stain Removal</th>
+                    <th>Raindrop Removal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total Dataset</td>
+                    <td>137</td>
+                    <td>36</td>
+                    <td>37</td>
+                    <td>31</td>
+                    <td>33</td>
+                </tr>
+                <tr>
+                    <td>Training Set</td>
+                    <td>105</td>
+                    <td>28</td>
+                    <td>28</td>
+                    <td>24</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Test Set</td>
+                    <td>24</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>Validation Set</td>
+                    <td>8</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Data Capture & Format</h2>
         <p>
             All data is captured by Lytro Illum light field camera with 7×7 sub-aperture views.
             Each group includes degraded dirty light field, clean ground-truth light field and pixel-level annotation mask.
         </p>
     </div>
 
-    <!-- 第一栏：LF-Raindrop数据集展示 -->
+    <!-- 第一栏：LF-Raindrop数据集展示（新增mask/refocus行） -->
     <div class="dataset-section" id="raindrop">
         <h2>LF-Raindrop Dataset</h2>
         <!-- 第一行：6列（雨滴图+GT图交叉） -->
         <div class="media-row">
             <div class="media-item">
-                <img src="img/raindrop.png" alt="Raindrop dataset sample">
-                <div class="media-caption">Raindrop Sample</div>
-            </div>
-            <div class="media-item">
-                <img src="img/raindrop_gt.png" alt="Raindrop GT sample">
-                <div class="media-caption">Raindrop GT</div>
-            </div>
-            <div class="media-item">
-                <img src="img/raindrop1.png" alt="Raindrop dataset sample 1">
+                <img src="img/raindrop.png" alt="Raindrop dataset sample 1">
                 <div class="media-caption">Raindrop Sample 1</div>
             </div>
             <div class="media-item">
-                <img src="img/raindrop_gt1.png" alt="Raindrop GT sample 1">
+                <img src="img/raindrop_gt.png" alt="Raindrop GT sample 1">
                 <div class="media-caption">Raindrop GT 1</div>
             </div>
             <div class="media-item">
-                <img src="img/raindrop2.png" alt="Raindrop dataset sample 2">
+                <img src="img/raindrop1.png" alt="Raindrop dataset sample 2">
                 <div class="media-caption">Raindrop Sample 2</div>
             </div>
             <div class="media-item">
-                <img src="img/raindrop_gt2.png" alt="Raindrop GT sample 2">
+                <img src="img/raindrop_gt1.png" alt="Raindrop GT sample 2">
                 <div class="media-caption">Raindrop GT 2</div>
             </div>
+            <div class="media-item">
+                <img src="img/raindrop2.png" alt="Raindrop dataset sample 3">
+                <div class="media-caption">Raindrop Sample 3</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop_gt2.png" alt="Raindrop GT sample 3">
+                <div class="media-caption">Raindrop GT 3</div>
+            </div>
         </div>
-        <!-- 第二行：3个GIF（保持3列，每列带注释） -->
+        <!-- 第二行：6列（mask/refocus） -->
+        <div class="media-row">
+            <div class="media-item">
+                <img src="img/raindrop_mask.png" alt="Raindrop mask 1">
+                <div class="media-caption">Raindrop Mask 1</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop_refocus.png" alt="Raindrop refocus 1">
+                <div class="media-caption">Raindrop Refocus 1 (GIF)</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop1_mask.png" alt="Raindrop mask 2">
+                <div class="media-caption">Raindrop Mask 2</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop1_refocus.png" alt="Raindrop refocus 2">
+                <div class="media-caption">Raindrop Refocus 2 (GIF)</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop2_mask.png" alt="Raindrop mask 3">
+                <div class="media-caption">Raindrop Mask 3</div>
+            </div>
+            <div class="media-item">
+                <img src="img/raindrop2_refocus.png" alt="Raindrop refocus 3">
+                <div class="media-caption">Raindrop Refocus 3 (GIF)</div>
+            </div>
+        </div>
+        <!-- 第三行：3个GIF（原有） -->
         <div class="media-row">
             <div class="media-item" style="width: 30%; min-width: 200px;">
                 <img src="img/raindrop_gt.gif" alt="Raindrop ground truth">
@@ -202,37 +397,64 @@
         </div>
     </div>
 
-    <!-- 第二栏：LF-Dirty数据集展示 -->
+    <!-- 第二栏：LF-Dirty数据集展示（新增mask/refocus行） -->
     <div class="dataset-section" id="dirty">
         <h2>LF-Dirty Dataset</h2>
         <!-- 第一行：6列（脏污图+GT图交叉） -->
         <div class="media-row">
             <div class="media-item">
-                <img src="img/dirty.png" alt="Dirty dataset sample">
-                <div class="media-caption">Dirty Sample</div>
-            </div>
-            <div class="media-item">
-                <img src="img/dirty_gt.png" alt="Dirty GT sample">
-                <div class="media-caption">Dirty GT</div>
-            </div>
-            <div class="media-item">
-                <img src="img/dirty1.png" alt="Dirty dataset sample 1">
+                <img src="img/dirty.png" alt="Dirty dataset sample 1">
                 <div class="media-caption">Dirty Sample 1</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_gt1.png" alt="Dirty GT sample 1">
+                <img src="img/dirty_gt.png" alt="Dirty GT sample 1">
                 <div class="media-caption">Dirty GT 1</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty2.png" alt="Dirty dataset sample 2">
+                <img src="img/dirty1.png" alt="Dirty dataset sample 2">
                 <div class="media-caption">Dirty Sample 2</div>
             </div>
             <div class="media-item">
-                <img src="img/dirty_gt2.png" alt="Dirty GT sample 2">
+                <img src="img/dirty_gt1.png" alt="Dirty GT sample 2">
                 <div class="media-caption">Dirty GT 2</div>
             </div>
+            <div class="media-item">
+                <img src="img/dirty2.png" alt="Dirty dataset sample 3">
+                <div class="media-caption">Dirty Sample 3</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty_gt2.png" alt="Dirty GT sample 3">
+                <div class="media-caption">Dirty GT 3</div>
+            </div>
         </div>
-        <!-- 第二行：3个GIF（保持3列，每列带注释） -->
+        <!-- 第二行：6列（mask/refocus） -->
+        <div class="media-row">
+            <div class="media-item">
+                <img src="img/dirty_mask.png" alt="Dirty mask 1">
+                <div class="media-caption">Dirty Mask 1</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty_refocus.png" alt="Dirty refocus 1">
+                <div class="media-caption">Dirty Refocus 1 (GIF)</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty1_mask.png" alt="Dirty mask 2">
+                <div class="media-caption">Dirty Mask 2</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty1_refocus.png" alt="Dirty refocus 2">
+                <div class="media-caption">Dirty Refocus 2 (GIF)</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty2_mask.png" alt="Dirty mask 3">
+                <div class="media-caption">Dirty Mask 3</div>
+            </div>
+            <div class="media-item">
+                <img src="img/dirty2_refocus.png" alt="Dirty refocus 3">
+                <div class="media-caption">Dirty Refocus 3 (GIF)</div>
+            </div>
+        </div>
+        <!-- 第三行：3个GIF（原有） -->
         <div class="media-row">
             <div class="media-item" style="width: 30%; min-width: 200px;">
                 <img src="img/dirty_gt.gif" alt="Dirty ground truth">
